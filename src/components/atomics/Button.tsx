@@ -20,18 +20,28 @@ const buttonStyle = (theme: Theme, color: ColorPalette) => css`
   padding: 0.625rem 1.125rem;
   border: 0;
   border-radius: 0.125rem;
-  background-color: ${color.background?.normal};
-  color: ${color.text?.normal};
   transition: all 100ms ease;
 
-  :hover {
-    ::after {
-      opacity: 1;
+  :enabled {
+    background-color: ${color.background?.normal};
+    color: ${color.text?.normal};
+    :hover {
+      ::after {
+        opacity: 1;
+      }
+    }
+
+    :active {
+      background-color: ${color.background?.active};
     }
   }
 
-  :active {
-    background-color: ${color.background?.active};
+  :disabled {
+    background-color: ${color.background?.disabled};
+    color: ${color.text?.disabled};
+    ::after {
+      display: none;
+    }
   }
 
   ::after {
