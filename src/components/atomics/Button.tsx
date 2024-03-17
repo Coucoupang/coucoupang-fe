@@ -30,7 +30,6 @@ const buttonStyle = (theme: Theme, color: ColorPalette) => css`
         opacity: 1;
       }
     }
-
     :active {
       background-color: ${color.background?.active};
     }

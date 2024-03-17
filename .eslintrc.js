@@ -7,6 +7,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
+    'plugin:storybook/recommended',
   ],
   overrides: [
     {
@@ -27,5 +28,6 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react'],
   rules: {
     'react/no-unknown-property': ['error', { ignore: ['css'] }],
+    'react/no-unescaped-entities': 0,
   },
 };
