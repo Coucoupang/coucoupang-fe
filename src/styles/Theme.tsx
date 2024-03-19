@@ -9,16 +9,20 @@ declare module '@emotion/react' {
   }
 
   interface ColorPalette {
-    color: string;
+    color: PseudoClass;
     border: PseudoClass;
     background: PseudoClass;
-    text: PseudoClass;
+  }
+
+  interface PaletteCategory {
+    button: ColorPalette;
+    textfield: ColorPalette;
   }
 
   export interface Theme {
     boxShadow: string;
     colors: {
-      primary: ColorPalette;
+      primary: PaletteCategory;
     };
   }
 }
@@ -27,24 +31,45 @@ const LightTheme: Theme = {
   boxShadow: '#aaa',
   colors: {
     primary: {
-      color: 'red',
-      border: {
-        normal: '#ff0038',
-        hover: '#ff0038',
-        active: '#db0030',
-        disabled: '#fd7373',
+      button: {
+        border: {
+          normal: '#ff0038',
+          hover: '#ff0038',
+          active: '#db0030',
+          disabled: '#fd7373',
+        },
+        background: {
+          normal: '#ff0038',
+          hover: '#ff0038',
+          active: '#db0030',
+          disabled: '#fd7373',
+        },
+        color: {
+          normal: '#fff',
+          hover: '#fff',
+          active: '#fff',
+          disabled: '#f3f3f3',
+        },
       },
-      background: {
-        normal: '#ff0038',
-        hover: '#ff0038',
-        active: '#db0030',
-        disabled: '#fd7373',
-      },
-      text: {
-        normal: '#fff',
-        hover: '#fff',
-        active: '#fff',
-        disabled: '#f3f3f3',
+      textfield: {
+        border: {
+          normal: '#ff0038',
+          hover: '#ff0038',
+          active: '#db0030',
+          disabled: '#fd7373',
+        },
+        background: {
+          normal: '#ff0038',
+          hover: '#ff0038',
+          active: '#db0030',
+          disabled: '#fd7373',
+        },
+        color: {
+          normal: '#000',
+          hover: '#000',
+          active: '#000',
+          disabled: '#474747',
+        },
       },
     },
   },

@@ -1,29 +1,31 @@
 /** @jsxImportSource @emotion/react */
 import { ColorPalette, Theme, css } from '@emotion/react';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-interface ButtonProps extends React.ComponentProps<'button'> {
+interface TextFieldProps extends React.ComponentProps<'input'> {
   variant: keyof Theme['colors'];
-  children?: ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
+const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
   return (
-    <button css={(theme) => buttonStyle(theme, theme.colors[props.variant].button)} {...props}>
-      {props.children}
-    </button>
+    <input
+      type="text"
+      css={(theme) => textFieldStyle(theme, theme.colors[props.variant].textfield)}
+      {...props}
+    />
   );
 };
 
-const buttonStyle = (theme: Theme, palette: ColorPalette) => css`
+const textFieldStyle = (theme: Theme, palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
+  outline: none;
   border: 0;
   border-radius: 0.125rem;
   transition: all 100ms ease;
 
   :enabled {
-    background-color: ${palette.background?.normal};
+    border: 1px solid ${palette.border?.normal};
     color: ${palette.color?.normal};
     :hover {
       ::after {
@@ -31,7 +33,7 @@ const buttonStyle = (theme: Theme, palette: ColorPalette) => css`
       }
     }
     :active {
-      background-color: ${palette.background?.active};
+      border: 1px solid ${palette.border?.active};
     }
   }
 
@@ -56,4 +58,4 @@ const buttonStyle = (theme: Theme, palette: ColorPalette) => css`
   }
 `;
 
-export default Button;
+export default TextField;
