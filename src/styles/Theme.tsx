@@ -4,8 +4,9 @@ declare module '@emotion/react' {
   interface PseudoClass {
     normal: string;
     disabled: string;
-    hover: string;
-    active: string;
+    hover?: string;
+    active?: string;
+    focus?: string;
   }
 
   interface ColorPalette {
@@ -53,22 +54,17 @@ const LightTheme: Theme = {
       },
       textfield: {
         border: {
-          normal: '#ff0038',
-          hover: '#ff0038',
-          active: '#db0030',
-          disabled: '#fd7373',
+          normal: '#ccc',
+          focus: '#ff0038',
+          disabled: '#bbb',
         },
         background: {
-          normal: '#ff0038',
-          hover: '#ff0038',
-          active: '#db0030',
-          disabled: '#fd7373',
+          normal: '#fff',
+          disabled: '#eee',
         },
         color: {
           normal: '#000',
-          hover: '#000',
-          active: '#000',
-          disabled: '#474747',
+          disabled: '#6d6d6d',
         },
       },
     },
