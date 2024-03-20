@@ -3,7 +3,7 @@ import { Theme } from '@emotion/react';
 declare module '@emotion/react' {
   interface PseudoClass {
     normal: string;
-    disabled: string;
+    disabled?: string;
     hover?: string;
     active?: string;
     focus?: string;
@@ -18,6 +18,7 @@ declare module '@emotion/react' {
   interface PaletteCategory {
     button: ColorPalette;
     textfield: ColorPalette;
+    card: ColorPalette;
   }
 
   export interface Theme {
@@ -61,6 +62,18 @@ const LightTheme: Theme = {
         background: {
           normal: '#fff',
           disabled: '#eee',
+        },
+        color: {
+          normal: '#000',
+          disabled: '#6d6d6d',
+        },
+      },
+      card: {
+        border: {
+          normal: '#ccc',
+        },
+        background: {
+          normal: '#fff',
         },
         color: {
           normal: '#000',
