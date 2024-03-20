@@ -29,7 +29,6 @@ const textFieldStyle = (theme: Theme, palette: ColorPalette) => css`
     color: ${palette.color?.normal};
     :focus {
       border: 1px solid ${palette.border?.focus};
-      //box-shadow: 0 0 6px ${theme.boxShadow};
     }
   }
 

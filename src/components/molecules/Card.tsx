@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <div
       style={{ width, height, ...style }}
-      css={(theme) => cardStyle(props, theme, theme.colors[props.variant].card)}
+      css={(theme) => cardStyle(props, theme.colors[props.variant].card)}
       {...props}
     >
       {props.children}
@@ -28,12 +28,12 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-const cardStyle = (props: CardProps, theme: Theme, palette: ColorPalette) => css`
+const cardStyle = (props: CardProps, palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
   ${props.border
     ? `
-  box-shadow: 0 0 3px ${theme.boxShadow};
+  box-shadow: 0 0 3px ${palette.boxShadow?.hover};
   border: 1px solid ${palette.border?.normal};`
     : 'border: 0;'}
   border-radius: 0.25rem;

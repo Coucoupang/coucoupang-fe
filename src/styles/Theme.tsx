@@ -2,7 +2,7 @@ import { Theme } from '@emotion/react';
 
 declare module '@emotion/react' {
   interface PseudoClass {
-    normal: string;
+    normal?: string;
     disabled?: string;
     hover?: string;
     active?: string;
@@ -13,6 +13,7 @@ declare module '@emotion/react' {
     color?: PseudoClass;
     border?: PseudoClass;
     background?: PseudoClass;
+    boxShadow?: PseudoClass;
   }
 
   interface PaletteCategory {
@@ -31,7 +32,6 @@ declare module '@emotion/react' {
   }
 
   export interface Theme {
-    boxShadow: string;
     fontSize: Size;
     fontWeight: Size;
     breakPoints: Size;
@@ -43,7 +43,6 @@ declare module '@emotion/react' {
 }
 
 const LightTheme: Theme = {
-  boxShadow: '#ddd',
   fontSize: {
     sm: '0.75rem',
     md: '1.0rem',
@@ -86,6 +85,9 @@ const LightTheme: Theme = {
           active: '#fff',
           disabled: '#f3f3f3',
         },
+        boxShadow: {
+          hover: '#aaa',
+        },
       },
       textfield: {
         border: {
@@ -108,9 +110,13 @@ const LightTheme: Theme = {
         },
         background: {
           normal: '#fff',
+          hover: '#f7fbff',
         },
         color: {
           normal: '#000',
+        },
+        boxShadow: {
+          hover: '#ddd',
         },
       },
       text: {
@@ -140,6 +146,9 @@ const LightTheme: Theme = {
           active: '#fff',
           disabled: '#f3f3f3',
         },
+        boxShadow: {
+          hover: '#aaa',
+        },
       },
       textfield: {
         border: {
@@ -165,6 +174,9 @@ const LightTheme: Theme = {
         },
         color: {
           normal: '#000',
+        },
+        boxShadow: {
+          hover: '#ddd',
         },
       },
       text: {

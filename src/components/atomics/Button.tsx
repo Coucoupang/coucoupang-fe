@@ -9,13 +9,13 @@ interface ButtonProps extends React.ComponentProps<'button'> {
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
   return (
-    <button css={(theme) => buttonStyle(theme, theme.colors[props.variant].button)} {...props}>
+    <button css={(theme) => buttonStyle(theme.colors[props.variant].button)} {...props}>
       {props.children}
     </button>
   );
 };
 
-const buttonStyle = (theme: Theme, palette: ColorPalette) => css`
+const buttonStyle = (palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
   border-radius: 0.125rem;
@@ -27,7 +27,7 @@ const buttonStyle = (theme: Theme, palette: ColorPalette) => css`
     background-color: ${palette.background?.normal};
     color: ${palette.color?.normal};
     :hover {
-      border: 1px solid ${palette.border?.hover};
+      border: 1px solid ${palette.border?.hover} !important;
       background-color: ${palette.background?.hover};
       ::after {
         opacity: 1;
@@ -54,7 +54,7 @@ const buttonStyle = (theme: Theme, palette: ColorPalette) => css`
     right: 0;
     bottom: 0;
     left: 0;
-    box-shadow: 0 0 6px ${theme.boxShadow};
+    box-shadow: 0 0 6px ${palette.boxShadow?.hover};
     opacity: 0;
     transition: opacity 150ms ease;
     content: '';
