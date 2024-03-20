@@ -25,10 +25,10 @@ const cardStyle = (theme: Theme, palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
   box-shadow: 0 0 3px ${theme.boxShadow};
-  border: 1px solid ${palette.border.normal};
+  border: 1px solid ${palette.border!.normal};
   border-radius: 0.125rem;
-  background-color: ${palette.background.normal};
-  color: ${palette.color.normal};
+  background-color: ${palette.background!.normal};
+  color: ${palette.color!.normal};
 `;
 
 export default Card;

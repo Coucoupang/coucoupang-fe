@@ -25,7 +25,7 @@ const textFieldStyle = (theme: Theme, palette: ColorPalette) => css`
   transition: all 100ms ease;
 
   :enabled {
-    border: 1px solid ${palette.border.normal};
+    border: 1px solid ${palette.border!.normal};
     color: ${palette.color?.normal};
     :focus {
       border: 1px solid ${palette.border?.focus};
@@ -34,8 +34,8 @@ const textFieldStyle = (theme: Theme, palette: ColorPalette) => css`
   }
 
   :disabled {
-    border: 1px solid ${palette.border.disabled};
-    background-color: ${palette.background?.disabled};
+    border: 1px solid ${palette.border!.disabled};
+    background-color: ${palette.background!.disabled};
     color: ${palette.color?.disabled};
   }
 `;
