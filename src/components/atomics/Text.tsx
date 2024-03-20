@@ -1,17 +1,20 @@
 /** @jsxImportSource @emotion/react */
-import { ColorPalette, Theme, css } from '@emotion/react';
+import { ColorPalette, Theme, css, useTheme } from '@emotion/react';
 import React, { ReactNode } from 'react';
 
 interface TextProps extends React.ComponentProps<'div'> {
-  variant: keyof Theme['colors'];
+  variant?: keyof Theme['colors'];
+  weight?: keyof Theme['fontWeight'];
   size: keyof Theme['fontSize'];
   children?: ReactNode;
 }
 
-const Text: React.FC<TextProps> = (props: TextProps) => {
+const Text: React.FC<TextProps> = ({ variant = 'primary', weight = 'md', ...props }: TextProps) => {
+  const theme = useTheme();
   return (
     <div
-      css={(theme) => textStyle(theme.fontSize[props.size], theme.colors[props.variant].text)}
+      style={{ fontSize: theme.fontSize[props.size], fontWeight: theme.fontWeight[weight] }}
+      css={(theme) => textStyle(theme.colors[variant].text)}
       {...props}
     >
       {props.children}
@@ -19,9 +22,8 @@ const Text: React.FC<TextProps> = (props: TextProps) => {
   );
 };
 
-const textStyle = (fontSize: string, palette: ColorPalette) => css`
+const textStyle = (palette: ColorPalette) => css`
   color: ${palette.color!.normal};
-  font-size: ${fontSize};
 `;
 
 export default Text;

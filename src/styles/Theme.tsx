@@ -27,11 +27,14 @@ declare module '@emotion/react' {
     md: string;
     lg: string;
     xl: string;
+    xxl: string;
   }
 
   export interface Theme {
     boxShadow: string;
     fontSize: Size;
+    fontWeight: Size;
+    breakPoints: Size;
     colors: {
       primary: PaletteCategory;
     };
@@ -39,12 +42,27 @@ declare module '@emotion/react' {
 }
 
 const LightTheme: Theme = {
-  boxShadow: '#aaa',
+  boxShadow: '#ddd',
   fontSize: {
     sm: '0.75rem',
     md: '1.0rem',
     lg: '1.25rem',
     xl: '1.5rem',
+    xxl: '1.75rem',
+  },
+  fontWeight: {
+    sm: '300',
+    md: '400',
+    lg: '600',
+    xl: '700',
+    xxl: '800',
+  },
+  breakPoints: {
+    sm: '576px',
+    md: '768px',
+    lg: '992px',
+    xl: '1200px',
+    xxl: '1400px',
   },
   colors: {
     primary: {
