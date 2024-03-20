@@ -37,6 +37,7 @@ declare module '@emotion/react' {
     breakPoints: Size;
     colors: {
       primary: PaletteCategory;
+      secondary: PaletteCategory;
     };
   }
 }
@@ -81,6 +82,60 @@ const LightTheme: Theme = {
         },
         color: {
           normal: '#fff',
+          hover: '#fff',
+          active: '#fff',
+          disabled: '#f3f3f3',
+        },
+      },
+      textfield: {
+        border: {
+          normal: '#ccc',
+          focus: '#ff0038',
+          disabled: '#bbb',
+        },
+        background: {
+          normal: '#fff',
+          disabled: '#eee',
+        },
+        color: {
+          normal: '#000',
+          disabled: '#6d6d6d',
+        },
+      },
+      card: {
+        border: {
+          normal: '#ccc',
+        },
+        background: {
+          normal: '#fff',
+        },
+        color: {
+          normal: '#000',
+        },
+      },
+      text: {
+        color: {
+          normal: '#000',
+        },
+      },
+    },
+
+    secondary: {
+      button: {
+        border: {
+          normal: '#525252',
+          hover: '#ff0038',
+          active: '#db0030',
+          disabled: '#fd7373',
+        },
+        background: {
+          normal: '#ffffff',
+          hover: '#ffffff',
+          active: '#f3f3f3',
+          disabled: '#fd7373',
+        },
+        color: {
+          normal: '#000000',
           hover: '#fff',
           active: '#fff',
           disabled: '#f3f3f3',
