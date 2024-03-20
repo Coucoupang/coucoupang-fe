@@ -9,11 +9,20 @@ interface TextProps extends React.ComponentProps<'div'> {
   children?: ReactNode;
 }
 
-const Text: React.FC<TextProps> = ({ variant = 'primary', weight = 'md', ...props }: TextProps) => {
+const Text: React.FC<TextProps> = ({
+  variant = 'primary',
+  weight = 'md',
+  style,
+  ...props
+}: TextProps) => {
   const theme = useTheme();
   return (
     <div
-      style={{ fontSize: theme.fontSize[props.size], fontWeight: theme.fontWeight[weight] }}
+      style={{
+        fontSize: theme.fontSize[props.size],
+        fontWeight: theme.fontWeight[weight],
+        ...style,
+      }}
       css={(theme) => textStyle(theme.colors[variant].text)}
       {...props}
     >
