@@ -19,7 +19,7 @@ const SingUpTemplate = () => {
       </Text>
       <ButtonGroup separatorColor="#ddd" vertical>
         <Button variant="secondary" style={{ padding: '1.25rem 0' }}>
-          휴대폰 번호로 가입하기
+          이메일로 가입하기
         </Button>
         <Button variant="secondary" style={{ padding: '1.25rem 0' }}>
           카카오로 가입하기
