@@ -10,19 +10,28 @@ declare module '@emotion/react' {
   }
 
   interface ColorPalette {
-    color: PseudoClass;
-    border: PseudoClass;
-    background: PseudoClass;
+    color?: PseudoClass;
+    border?: PseudoClass;
+    background?: PseudoClass;
   }
 
   interface PaletteCategory {
     button: ColorPalette;
     textfield: ColorPalette;
     card: ColorPalette;
+    text: ColorPalette;
+  }
+
+  interface Size {
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
   }
 
   export interface Theme {
     boxShadow: string;
+    fontSize: Size;
     colors: {
       primary: PaletteCategory;
     };
@@ -31,6 +40,12 @@ declare module '@emotion/react' {
 
 const LightTheme: Theme = {
   boxShadow: '#aaa',
+  fontSize: {
+    sm: '0.75rem',
+    md: '1.0rem',
+    lg: '1.25rem',
+    xl: '1.5rem',
+  },
   colors: {
     primary: {
       button: {
@@ -77,7 +92,11 @@ const LightTheme: Theme = {
         },
         color: {
           normal: '#000',
-          disabled: '#6d6d6d',
+        },
+      },
+      text: {
+        color: {
+          normal: '#000',
         },
       },
     },
