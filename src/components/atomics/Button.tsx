@@ -18,24 +18,28 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
 const buttonStyle = (theme: Theme, palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
-  border: 0;
   border-radius: 0.125rem;
-  transition: all 100ms ease;
+  transition: all 150ms ease;
 
   :enabled {
+    border: 1px solid ${palette.border?.normal};
     background-color: ${palette.background?.normal};
     color: ${palette.color?.normal};
     :hover {
+      border: 1px solid ${palette.border?.hover};
+      background-color: ${palette.background?.hover};
       ::after {
         opacity: 1;
       }
     }
     :active {
+      border: 1px solid ${palette.border?.active};
       background-color: ${palette.background?.active};
     }
   }
 
   :disabled {
+    border: 1px solid ${palette.border?.disabled};
     background-color: ${palette.background?.disabled};
     color: ${palette.color?.disabled};
     ::after {
