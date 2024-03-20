@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { ColorPalette, Theme, css } from '@emotion/react';
 import React, { ReactNode } from 'react';
-import Text from '../atomics/Text';
 
 interface CardProps extends React.ComponentProps<'div'> {
   variant: keyof Theme['colors'];
   width?: string;
   height?: string;
-  title?: string;
+  border?: boolean;
+  hover?: boolean;
   children?: ReactNode;
 }
 
@@ -20,27 +20,33 @@ const Card: React.FC<CardProps> = ({
   return (
     <div
       style={{ width, height, ...style }}
-      css={(theme) => cardStyle(theme, theme.colors[props.variant].card)}
+      css={(theme) => cardStyle(props, theme, theme.colors[props.variant].card)}
       {...props}
     >
-      {props.title && (
-        <Text size="lg" weight="lg" style={{ marginBottom: '0.5rem' }}>
-          {props.title}
-        </Text>
-      )}
       {props.children}
     </div>
   );
 };
 
-const cardStyle = (theme: Theme, palette: ColorPalette) => css`
+const cardStyle = (props: CardProps, theme: Theme, palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
+  ${props.border
+    ? `
   box-shadow: 0 0 3px ${theme.boxShadow};
-  border: 1px solid ${palette.border!.normal};
-  border-radius: 0.125rem;
-  background-color: ${palette.background!.normal};
-  color: ${palette.color!.normal};
+  border: 1px solid ${palette.border?.normal};`
+    : 'border: 0;'}
+  border-radius: 0.25rem;
+  background-color: ${palette.background?.normal};
+  color: ${palette.color?.normal};
+
+  ${props.hover &&
+  `
+    :hover {
+      background-color: ${palette.background?.hover};
+    }
+  `}
+  transition: all 150ms ease;
 `;
 
 export default Card;
