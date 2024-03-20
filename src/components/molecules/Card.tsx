@@ -1,21 +1,33 @@
 /** @jsxImportSource @emotion/react */
 import { ColorPalette, Theme, css } from '@emotion/react';
 import React, { ReactNode } from 'react';
+import Text from '../atomics/Text';
 
 interface CardProps extends React.ComponentProps<'div'> {
   variant: keyof Theme['colors'];
   width?: string;
   height?: string;
+  title?: string;
   children?: ReactNode;
 }
 
-const Card: React.FC<CardProps> = ({ width = 'auto', height = 'auto', ...props }: CardProps) => {
+const Card: React.FC<CardProps> = ({
+  width = 'auto',
+  height = 'auto',
+  style,
+  ...props
+}: CardProps) => {
   return (
     <div
-      style={{ width, height }}
+      style={{ width, height, ...style }}
       css={(theme) => cardStyle(theme, theme.colors[props.variant].card)}
       {...props}
     >
+      {props.title && (
+        <Text size="lg" weight="lg" style={{ marginBottom: '0.5rem' }}>
+          {props.title}
+        </Text>
+      )}
       {props.children}
     </div>
   );
