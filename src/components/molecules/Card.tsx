@@ -33,13 +33,13 @@ const cardStyle = (props: CardProps, palette: ColorPalette) => css`
   padding: 0.625rem 1.125rem;
   ${props.border
     ? `
-  box-shadow: 0 0 3px ${palette.boxShadow?.hover};
+  box-shadow: 0 0 2px ${palette.boxShadow?.hover};
   border: 1px solid ${palette.border?.normal};`
     : 'border: 0;'}
   border-radius: 0.25rem;
   background-color: ${palette.background?.normal};
   color: ${palette.color?.normal};
-
+  overflow: hidden;
   ${props.hover &&
   `
     :hover {
