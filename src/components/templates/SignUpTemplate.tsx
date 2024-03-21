@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import Card from '../molecules/Card';
 import { Theme, css } from '@emotion/react';
 import Text from '../atomics/Text';
 import Button from '../atomics/Button';
 import ButtonGroup from '../molecules/ButtonGroup';
+import { MdKeyboardArrowRight } from 'react-icons/md';
+import Card from '../molecules/Card';
 
 const SingUpTemplate = () => {
   return (
@@ -13,21 +14,48 @@ const SingUpTemplate = () => {
         variant="primary"
         size="xl"
         weight="lg"
-        style={{ margin: '1.5rem 0', letterSpacing: '1px' }}
+        style={{ margin: '2rem 0', letterSpacing: '1px' }}
       >
         회원가입
       </Text>
-      <ButtonGroup separatorColor="#ddd" vertical>
-        <Button variant="secondary" style={{ padding: '1.25rem 0' }} boxShadow={false}>
-          이메일로 가입하기
-        </Button>
-        <Button variant="secondary" style={{ padding: '1.25rem 0' }} boxShadow={false}>
-          카카오로 가입하기
-        </Button>
-        <Button variant="secondary" style={{ padding: '1.25rem 0' }} boxShadow={false}>
-          네이버로 가입하기
-        </Button>
-      </ButtonGroup>
+      <Card variant="primary" style={{ padding: '0', margin: '0 auto', maxWidth: '350px' }}>
+        <ButtonGroup separatorColor="transparent" vertical>
+          <Button
+            variant="light"
+            style={{ height: '4.5rem', justifyContent: 'flex-start' }}
+            boxShadow={false}
+          >
+            이메일로 가입하기
+            <MdKeyboardArrowRight css={buttonIcon} />
+          </Button>
+          <Button
+            variant="light"
+            style={{ height: '4.5rem', justifyContent: 'flex-start' }}
+            boxShadow={false}
+          >
+            <img
+              src={require('../../assets/images/oauth/kakao.png')}
+              style={{ marginRight: '0.5rem' }}
+              alt="kakao"
+            />
+            카카오로 가입하기
+            <MdKeyboardArrowRight css={buttonIcon} />
+          </Button>
+          <Button
+            variant="light"
+            style={{ height: '4.5rem', justifyContent: 'flex-start' }}
+            boxShadow={false}
+          >
+            <img
+              src={require('../../assets/images/oauth/google.png')}
+              style={{ marginRight: '0.5rem' }}
+              alt="google"
+            />
+            구글로 가입하기
+            <MdKeyboardArrowRight css={buttonIcon} />
+          </Button>
+        </ButtonGroup>
+      </Card>
       <div css={sellerContainer}>
         <Text size="md">쿠쿠팡에서 판매를 원하세요?</Text>
         <Button variant="primary">판매자 가입하기</Button>
@@ -42,11 +70,18 @@ const signUpContainer = (theme: Theme) => css`
   padding: 1rem;
 `;
 
+const buttonIcon = css`
+  position: absolute;
+  right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+
 const sellerContainer = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 `;
 
 export default SingUpTemplate;

@@ -196,8 +196,8 @@ const LightTheme: Theme = {
           disabled: 'transparent',
         },
         background: {
-          normal: '#ffffff',
-          hover: '#ffffff',
+          normal: '#f7f9fd',
+          hover: '#eff1f5',
           active: '#eff1f5',
           disabled: '#eff1f5',
         },
