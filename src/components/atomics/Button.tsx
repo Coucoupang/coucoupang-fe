@@ -23,6 +23,9 @@ const Button: React.FC<ButtonProps> = ({ boxShadow = true, ...props }: ButtonPro
 };
 
 const buttonStyle = (props: ButtonStyleProps, palette: ColorPalette) => css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   padding: 0.625rem 1.125rem;
   border-radius: 0.125rem;
