@@ -33,6 +33,7 @@ const Text: React.FC<TextProps> = ({
 
 const textStyle = (palette: ColorPalette) => css`
   color: ${palette.color!.normal};
+  word-break: keep-all;
 `;
 
 export default Text;

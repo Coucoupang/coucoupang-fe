@@ -19,6 +19,7 @@ const buttonStyle = (palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
   border-radius: 0.125rem;
+  word-break: keep-all;
   cursor: pointer;
   transition: all 150ms ease;
 
