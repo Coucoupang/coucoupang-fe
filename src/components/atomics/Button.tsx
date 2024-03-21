@@ -2,20 +2,27 @@
 import { ColorPalette, Theme, css } from '@emotion/react';
 import React, { ReactNode } from 'react';
 
-interface ButtonProps extends React.ComponentProps<'button'> {
+interface ButtonStyleProps {
+  boxShadow?: boolean;
+}
+
+interface ButtonProps extends ButtonStyleProps, React.ComponentProps<'button'> {
   variant: keyof Theme['colors'];
   children?: ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ boxShadow = true, ...props }: ButtonProps) => {
   return (
-    <button css={(theme) => buttonStyle(theme.colors[props.variant].button)} {...props}>
+    <button
+      css={(theme) => buttonStyle({ boxShadow }, theme.colors[props.variant].button)}
+      {...props}
+    >
       {props.children}
     </button>
   );
 };
 
-const buttonStyle = (palette: ColorPalette) => css`
+const buttonStyle = (props: ButtonStyleProps, palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
   border-radius: 0.125rem;
@@ -50,6 +57,10 @@ const buttonStyle = (palette: ColorPalette) => css`
   }
 
   ::after {
+    ${!props.boxShadow &&
+    css`
+      display: none;
+    `}
     position: absolute;
     top: 0;
     right: 0;

@@ -18,13 +18,13 @@ const SingUpTemplate = () => {
         회원가입
       </Text>
       <ButtonGroup separatorColor="#ddd" vertical>
-        <Button variant="secondary" style={{ padding: '1.25rem 0' }}>
+        <Button variant="secondary" style={{ padding: '1.25rem 0' }} boxShadow={false}>
           이메일로 가입하기
         </Button>
-        <Button variant="secondary" style={{ padding: '1.25rem 0' }}>
+        <Button variant="secondary" style={{ padding: '1.25rem 0' }} boxShadow={false}>
           카카오로 가입하기
         </Button>
-        <Button variant="secondary" style={{ padding: '1.25rem 0' }}>
+        <Button variant="secondary" style={{ padding: '1.25rem 0' }} boxShadow={false}>
           네이버로 가입하기
         </Button>
       </ButtonGroup>
