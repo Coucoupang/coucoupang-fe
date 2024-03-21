@@ -38,6 +38,7 @@ declare module '@emotion/react' {
     colors: {
       primary: PaletteCategory;
       secondary: PaletteCategory;
+      light: PaletteCategory;
     };
   }
 }
@@ -139,6 +140,66 @@ const LightTheme: Theme = {
           hover: '#ffffff',
           active: '#f3f3f3',
           disabled: '#fd7373',
+        },
+        color: {
+          normal: '#000000',
+          hover: '#fff',
+          active: '#fff',
+          disabled: '#f3f3f3',
+        },
+        boxShadow: {
+          hover: '#aaa',
+        },
+      },
+      textfield: {
+        border: {
+          normal: '#ccc',
+          focus: '#ff0038',
+          disabled: '#bbb',
+        },
+        background: {
+          normal: '#fff',
+          disabled: '#eee',
+        },
+        color: {
+          normal: '#000',
+          disabled: '#6d6d6d',
+        },
+      },
+      card: {
+        border: {
+          normal: '#ccc',
+        },
+        background: {
+          normal: '#fff',
+        },
+        color: {
+          normal: '#000',
+        },
+        boxShadow: {
+          hover: '#ddd',
+        },
+      },
+      text: {
+        color: {
+          normal: '#000',
+        },
+      },
+    },
+
+    light: {
+      button: {
+        border: {
+          normal: 'transparent',
+          hover: 'transparent',
+          active: 'transparent',
+          disabled: 'transparent',
+        },
+        background: {
+          normal: '#ffffff',
+          hover: '#ffffff',
+          active: '#eff1f5',
+          disabled: '#eff1f5',
         },
         color: {
           normal: '#000000',
