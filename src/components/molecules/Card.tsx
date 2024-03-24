@@ -12,23 +12,25 @@ interface CardProps extends React.ComponentProps<'div'> {
 }
 
 const Card: React.FC<CardProps> = ({
-  width = 'auto',
-  height = 'auto',
-  style,
+  variant,
+  width,
+  height,
+  border,
+  hover,
+  children,
   ...props
 }: CardProps) => {
   return (
     <div
-      style={{ width, height, ...style }}
-      css={(theme) => cardStyle(props, theme.colors[props.variant].card)}
-      {...props}
+      style={{ width, height, ...props.style }}
+      css={(theme) => cardStyle({ hover, border }, theme.colors[variant].card)}
     >
-      {props.children}
+      {children}
     </div>
   );
 };
 
-const cardStyle = (props: CardProps, palette: ColorPalette) => css`
+const cardStyle = (props: Partial<CardProps>, palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
   ${props.border
