@@ -4,21 +4,31 @@ import { Theme, css } from '@emotion/react';
 import Text from '../atomics/Text';
 import Button from '../atomics/Button';
 import ButtonGroup from '../molecules/ButtonGroup';
-import { MdKeyboardArrowRight } from 'react-icons/md';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import Card from '../molecules/Card';
+import IconText from 'components/molecules/IconText';
 
 const SingUpTemplate = () => {
   return (
     <div css={(theme) => signUpContainer(theme)}>
-      <Text
+      <div css={head}>
+        <IconText
+          variant="primary"
+          icon={<MdKeyboardArrowLeft size={24} />}
+          size="xl"
+          weight="lg"
+          hover="toLeft"
+          onClick={() => (location.href = './')}
+          style={{ letterSpacing: '1px' }}
+        >
+          회원가입
+        </IconText>
+      </div>
+      <Card
         variant="primary"
-        size="xl"
-        weight="lg"
-        style={{ margin: '2rem 0', letterSpacing: '1px' }}
+        height="100"
+        style={{ padding: '0', margin: '0 auto', maxWidth: '350px' }}
       >
-        회원가입
-      </Text>
-      <Card variant="primary" style={{ padding: '0', margin: '0 auto', maxWidth: '350px' }}>
         <ButtonGroup separatorColor="transparent" vertical>
           <Button
             variant="light"
@@ -83,6 +93,10 @@ const sellerContainer = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 2rem 0;
+`;
+
+const head = css`
   margin: 2rem 0;
 `;
 
