@@ -199,13 +199,13 @@ const LightTheme: Theme = {
           normal: '#f7f9fd',
           hover: '#eff1f5',
           active: '#eff1f5',
-          disabled: '#eff1f5',
+          disabled: '#eee',
         },
         color: {
           normal: '#000000',
           hover: '#fff',
           active: '#fff',
-          disabled: '#f3f3f3',
+          disabled: '#8f8f8f',
         },
         boxShadow: {
           hover: '#aaa',

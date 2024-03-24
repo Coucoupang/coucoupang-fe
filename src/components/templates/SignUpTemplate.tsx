@@ -28,19 +28,7 @@ const SingUpTemplate = () => {
             이메일로 가입하기
             <MdKeyboardArrowRight css={buttonIcon} />
           </Button>
-          <Button
-            variant="light"
-            style={{ height: '4.5rem', justifyContent: 'flex-start' }}
-            boxShadow={false}
-          >
-            <img
-              src={require('../../assets/images/oauth/kakao.png')}
-              style={{ marginRight: '0.5rem' }}
-              alt="kakao"
-            />
-            카카오로 가입하기
-            <MdKeyboardArrowRight css={buttonIcon} />
-          </Button>
+
           <Button
             variant="light"
             style={{ height: '4.5rem', justifyContent: 'flex-start' }}
@@ -51,7 +39,21 @@ const SingUpTemplate = () => {
               style={{ marginRight: '0.5rem' }}
               alt="google"
             />
-            구글로 가입하기
+            Google로 가입하기
+            <MdKeyboardArrowRight css={buttonIcon} />
+          </Button>
+          <Button
+            variant="light"
+            style={{ height: '4.5rem', justifyContent: 'flex-start' }}
+            boxShadow={false}
+            disabled
+          >
+            <img
+              src={require('../../assets/images/oauth/kakao.png')}
+              style={{ marginRight: '0.5rem' }}
+              alt="kakao"
+            />
+            카카오로 가입하기
             <MdKeyboardArrowRight css={buttonIcon} />
           </Button>
         </ButtonGroup>
