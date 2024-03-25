@@ -31,14 +31,7 @@ const IconText: React.FC<IconTextProps> = ({
       {...props}
     >
       {icon}
-      <Text
-        variant={variant}
-        size={size}
-        weight={weight}
-        style={{ display: 'inline', marginLeft: '0.375rem' }}
-      >
-        {props.children}
-      </Text>
+      {props.children}
     </span>
   );
 };

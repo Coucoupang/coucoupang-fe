@@ -4,6 +4,7 @@ import Theme from './styles/Theme';
 import GlobalStyle from './styles/GlobalStyle';
 import SignUp from './pages/SignUp';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Main from './pages/Main';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
+          <Route index element={<Main />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>

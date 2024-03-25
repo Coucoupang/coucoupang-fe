@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { ReactNode } from 'react';
-import { Theme, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import Text from '../atomics/Text';
 import Button from '../atomics/Button';
 import ButtonGroup from '../molecules/ButtonGroup';
