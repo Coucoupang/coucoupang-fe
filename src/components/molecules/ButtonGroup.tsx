@@ -26,7 +26,7 @@ const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
   ${vertical
     ? css`
         flex-direction: column;
-        button:first-child {
+        button:first-of-type {
           border-bottom-right-radius: 0;
           border-bottom-left-radius: 0;
           ${separatorColor &&
@@ -37,7 +37,7 @@ const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
             z-index: 2;
           }
         }
-        button:last-child {
+        button:last-of-type {
           border-top-left-radius: 0;
           border-top-right-radius: 0;
           ${separatorColor &&
@@ -49,7 +49,7 @@ const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
             z-index: 2;
           }
         }
-        button:not(:first-child):not(:last-child) {
+        button:not(:first-of-type):not(:last-of-type) {
           border-radius: 0;
           margin-top: -1px;
           ${separatorColor &&
@@ -63,7 +63,7 @@ const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
       `
     : css`
         flex-direction: row;
-        button:first-child {
+        button:first-of-type {
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
           ${separatorColor &&
@@ -74,7 +74,7 @@ const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
             z-index: 2;
           }
         }
-        button:last-child {
+        button:last-of-type {
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
           ${separatorColor &&
@@ -86,7 +86,7 @@ const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
             z-index: 2;
           }
         }
-        button:not(:first-child):not(:last-child) {
+        button:not(:first-of-type):not(:last-of-type) {
           border-radius: 0;
           margin-left: -1px;
           ${separatorColor &&
