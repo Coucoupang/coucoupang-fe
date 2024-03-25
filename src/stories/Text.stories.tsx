@@ -10,7 +10,6 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  args: { onClick: fn() },
 } satisfies Meta<typeof Text>;
 
 export default meta;

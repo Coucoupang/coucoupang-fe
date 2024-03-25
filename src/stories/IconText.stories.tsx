@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import IconText from 'components/molecules/IconText';
+import IconText from '../components/molecules/IconText';
 import React from 'react';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export

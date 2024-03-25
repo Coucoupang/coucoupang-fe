@@ -12,7 +12,6 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {},
-  args: { onClick: fn() },
 } satisfies Meta<typeof ButtonGroup>;
 
 export default meta;
