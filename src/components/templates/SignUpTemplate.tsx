@@ -6,7 +6,7 @@ import Button from '../atomics/Button';
 import ButtonGroup from '../molecules/ButtonGroup';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import Card from '../molecules/Card';
-import IconText from 'components/molecules/IconText';
+import IconText from '../molecules/IconText';
 
 const SingUpTemplate = () => {
   return (
