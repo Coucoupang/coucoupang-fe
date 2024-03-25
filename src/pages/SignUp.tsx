@@ -1,15 +1,20 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { useRef } from 'react';
 import SignUpMethod from './SignUpMethod';
 import { Theme, css } from '@emotion/react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SignUpEmail from './SignUpEmail';
 import IconText from '../components/molecules/IconText';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import Text from '../components/atomics/Text';
 
 const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  console.log(location.state?.method);
 
   return (
     <div css={(theme) => signUpContainer(theme)}>
@@ -23,7 +28,34 @@ const SignUp = () => {
           onClick={() => navigate('/')}
           style={{ letterSpacing: '1px' }}
         >
-          회원가입
+          <SwitchTransition>
+            <CSSTransition
+              key={location.state?.method}
+              nodeRef={titleRef}
+              timeout={300}
+              classNames="rotateY"
+              unmountOnExit
+            >
+              <Text
+                ref={titleRef}
+                variant="primary"
+                size="lg"
+                weight="xl"
+                style={{ display: 'inline', marginLeft: '0.375rem' }}
+              >
+                {(() => {
+                  switch (location.state?.method) {
+                    case 'google':
+                      return '구글';
+                    case 'kakao':
+                      return '카카오';
+                    default:
+                      return '회원가입';
+                  }
+                })()}
+              </Text>
+            </CSSTransition>
+          </SwitchTransition>
         </IconText>
       </div>
       {(() => {
