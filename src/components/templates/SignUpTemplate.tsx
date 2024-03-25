@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Theme, css } from '@emotion/react';
 import Text from '../atomics/Text';
 import Button from '../atomics/Button';
@@ -8,7 +8,16 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import Card from '../molecules/Card';
 import IconText from '../molecules/IconText';
 
-const SingUpTemplate = () => {
+interface SignUpMethod {
+  name: ReactNode;
+  url: string;
+}
+
+interface SignUpTemplateProps {
+  signUpMethod: SignUpMethod[];
+}
+
+const SingUpTemplate = ({ signUpMethod }: SignUpTemplateProps) => {
   return (
     <div css={(theme) => signUpContainer(theme)}>
       <div css={head}>
@@ -30,42 +39,17 @@ const SingUpTemplate = () => {
         style={{ padding: '0', margin: '0 auto', maxWidth: '350px' }}
       >
         <ButtonGroup separatorColor="transparent" vertical>
-          <Button
-            variant="light"
-            style={{ height: '4.5rem', justifyContent: 'flex-start' }}
-            boxShadow={false}
-          >
-            이메일로 가입하기
-            <MdKeyboardArrowRight css={buttonIcon} />
-          </Button>
-
-          <Button
-            variant="light"
-            style={{ height: '4.5rem', justifyContent: 'flex-start' }}
-            boxShadow={false}
-          >
-            <img
-              src={require('../../assets/images/oauth/google.png')}
-              style={{ marginRight: '0.5rem' }}
-              alt="google"
-            />
-            Google로 가입하기
-            <MdKeyboardArrowRight css={buttonIcon} />
-          </Button>
-          <Button
-            variant="light"
-            style={{ height: '4.5rem', justifyContent: 'flex-start' }}
-            boxShadow={false}
-            disabled
-          >
-            <img
-              src={require('../../assets/images/oauth/kakao.png')}
-              style={{ marginRight: '0.5rem' }}
-              alt="kakao"
-            />
-            카카오로 가입하기
-            <MdKeyboardArrowRight css={buttonIcon} />
-          </Button>
+          {signUpMethod.map((method) => (
+            <Button
+              variant="light"
+              style={{ height: '4.5rem', justifyContent: 'flex-start' }}
+              boxShadow={false}
+              key={method.url}
+            >
+              {method.name}
+              <MdKeyboardArrowRight css={buttonIcon} />
+            </Button>
+          ))}
         </ButtonGroup>
       </Card>
       <div css={sellerContainer}>
