@@ -11,11 +11,10 @@ interface ButtonGroupProps extends React.ComponentProps<'div'> {
 const ButtonGroup: React.FC<ButtonGroupProps> = ({
   vertical = false,
   separatorColor = '',
-  style,
   ...props
 }: ButtonGroupProps) => {
   return (
-    <div style={{ ...style }} css={buttonGroupStyle(vertical, separatorColor)} {...props}>
+    <div style={props.style} css={buttonGroupStyle(vertical, separatorColor)} {...props}>
       {props.children}
     </div>
   );

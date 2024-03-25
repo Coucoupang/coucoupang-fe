@@ -12,6 +12,7 @@ interface TextProps extends React.ComponentProps<'div'> {
 const Text: React.FC<TextProps> = ({
   variant = 'primary',
   weight = 'md',
+  size,
   style,
   ...props
 }: TextProps) => {
@@ -19,7 +20,7 @@ const Text: React.FC<TextProps> = ({
   return (
     <div
       style={{
-        fontSize: theme.fontSize[props.size],
+        fontSize: theme.fontSize[size],
         fontWeight: theme.fontWeight[weight],
         ...style,
       }}

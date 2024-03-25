@@ -7,12 +7,16 @@ interface TextFieldProps extends React.ComponentProps<'input'> {
   variant: keyof Theme['colors'];
 }
 
-const TextField: React.FC<TextFieldProps> = ({ width = '100%', ...props }: TextFieldProps) => {
+const TextField: React.FC<TextFieldProps> = ({
+  width = '100%',
+  variant,
+  ...props
+}: TextFieldProps) => {
   return (
     <input
       type="text"
       style={{ width }}
-      css={(theme) => textFieldStyle(theme, theme.colors[props.variant].textfield)}
+      css={(theme) => textFieldStyle(theme, theme.colors[variant].textfield)}
       {...props}
     />
   );

@@ -11,12 +11,9 @@ interface ButtonProps extends ButtonStyleProps, React.ComponentProps<'button'> {
   children?: ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ boxShadow = true, ...props }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ variant, boxShadow = true, ...props }: ButtonProps) => {
   return (
-    <button
-      css={(theme) => buttonStyle({ boxShadow }, theme.colors[props.variant].button)}
-      {...props}
-    >
+    <button css={(theme) => buttonStyle({ boxShadow }, theme.colors[variant].button)} {...props}>
       {props.children}
     </button>
   );
