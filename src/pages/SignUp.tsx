@@ -13,6 +13,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const titleRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   console.log(location.state?.method);
 
@@ -33,7 +34,7 @@ const SignUp = () => {
               key={location.state?.method}
               nodeRef={titleRef}
               timeout={300}
-              classNames="rotateY"
+              classNames="rotateX"
               unmountOnExit
             >
               <Text
@@ -45,6 +46,8 @@ const SignUp = () => {
               >
                 {(() => {
                   switch (location.state?.method) {
+                    case 'email':
+                      return '회원가입';
                     case 'google':
                       return '구글';
                     case 'kakao':
@@ -58,14 +61,26 @@ const SignUp = () => {
           </SwitchTransition>
         </IconText>
       </div>
-      {(() => {
-        switch (location.state?.method) {
-          case 'email':
-            return <SignUpEmail />;
-          default:
-            return <SignUpMethod />;
-        }
-      })()}
+      <SwitchTransition>
+        <CSSTransition
+          key={location.state?.method}
+          nodeRef={bodyRef}
+          timeout={300}
+          classNames="toRight"
+          unmountOnExit
+        >
+          <div ref={bodyRef}>
+            {(() => {
+              switch (location.state?.method) {
+                case 'email':
+                  return <SignUpEmail />;
+                default:
+                  return <SignUpMethod />;
+              }
+            })()}
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
     </div>
   );
 };
