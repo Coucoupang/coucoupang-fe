@@ -14,7 +14,7 @@ interface TextFieldProps {
 const TextField: React.FC<TextFieldProps> = ({
   variant,
   type = 'text',
-  width = '',
+  width = '100%',
   label = '',
   disabled = false,
   children = '',
@@ -68,6 +68,7 @@ const textFieldStyle = (palette: ColorPalette, label: boolean) => css`
         padding: 0.75rem 0.625rem;
       `}
   outline: none;
+  box-sizing: border-box;
   border-radius: 0.175rem;
   border: 0;
   transition: all 100ms ease;
