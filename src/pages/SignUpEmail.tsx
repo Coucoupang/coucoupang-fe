@@ -1,11 +1,10 @@
 import React from 'react';
-import TextField from '../components/atomics/TextField';
+import TextField from '../components/molecules/TextField';
 
 const SignUpEmail = () => {
   return (
     <>
-      Sign up by email
-      <TextField variant="primary" type="email" />
+      <TextField type="email" variant="primary" label="이메일 주소" />
     </>
   );
 };

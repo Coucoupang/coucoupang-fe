@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import TextField from '../components/atomics/TextField';
+import TextField from '../components/molecules/TextField';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'atomics/TextField',
+  title: 'molecules/TextField',
   component: TextField,
   parameters: {
     layout: 'centered',
@@ -17,7 +17,8 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     variant: 'primary',
-    value: 'Text',
+    label: 'Label',
+    children: 'Text',
     disabled: false,
   },
 };
