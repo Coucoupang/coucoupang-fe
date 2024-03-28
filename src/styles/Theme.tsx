@@ -34,7 +34,6 @@ declare module '@emotion/react' {
   export interface Theme {
     fontSize: Size;
     fontWeight: Size;
-    breakPoints: Size;
     colors: {
       primary: PaletteCategory;
       secondary: PaletteCategory;
@@ -57,13 +56,6 @@ const LightTheme: Theme = {
     lg: '600',
     xl: '700',
     xxl: '800',
-  },
-  breakPoints: {
-    sm: '576px',
-    md: '768px',
-    lg: '992px',
-    xl: '1200px',
-    xxl: '1400px',
   },
   colors: {
     primary: {

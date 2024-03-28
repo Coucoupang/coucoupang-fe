@@ -6,27 +6,27 @@ const animations = {
   toRight: css`
     .toRight-enter {
       opacity: 0;
-      transform: translateX(-1rem);
+      transform: scale(0.95);
     }
     .toRight-exit {
-      opacity: 1;
+      opacity: 0;
     }
     .toRight-enter-active {
-      transform: translateX(0);
       opacity: 1;
+      transform: scale(1);
     }
     .toRight-exit-active {
       opacity: 0;
     }
     .toRight-enter-active,
     .toRight-exit-active {
-      transition: all 300ms;
+      transition: all 150ms;
     }
   `,
   rotateX: css`
     .rotateX-enter {
       opacity: 0;
-      transform: rotateX(0.25turn);
+      //transform: rotateX(0.25turn);
     }
     .rotateX-exit {
       opacity: 1;
@@ -36,7 +36,7 @@ const animations = {
       opacity: 1;
     }
     .rotateX-exit-active {
-      transform: rotateX(0.25turn);
+      //transform: rotateX(0.25turn);
       opacity: 0;
     }
     .rotateX-enter-active,
@@ -60,6 +60,11 @@ const GlobalStyle = () => {
           * {
             font-family: 'Pretendard';
             font-size: 16px;
+            --breakpoint-sm: 576px;
+            --breakpoint-md: 768px;
+            --breakpoint-lg: 992px;
+            --breakpoint-xl: 1200px;
+            --breakpoint-xxl: 1400px;
           }
         `,
         ...Object.values(animations),

@@ -18,7 +18,7 @@ const SignUp = () => {
   console.log(location.state?.method);
 
   return (
-    <div css={(theme) => signUpContainer(theme)}>
+    <div css={signUpContainer}>
       <div css={head}>
         <IconText
           variant="primary"
@@ -65,7 +65,7 @@ const SignUp = () => {
         <CSSTransition
           key={location.state?.method}
           nodeRef={bodyRef}
-          timeout={300}
+          timeout={150}
           classNames="toRight"
           unmountOnExit
         >
@@ -85,8 +85,8 @@ const SignUp = () => {
   );
 };
 
-const signUpContainer = (theme: Theme) => css`
-  max-width: ${theme.breakPoints.sm};
+const signUpContainer = () => css`
+  max-width: var(--breakpoint-sm);
   margin: 0 auto;
   padding: 1rem;
 `;
