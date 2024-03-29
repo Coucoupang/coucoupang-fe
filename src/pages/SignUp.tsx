@@ -1,21 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import React, { useRef } from 'react';
 import SignUpMethod from './SignUpMethod';
-import { Theme, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SignUpEmail from './SignUpEmail';
 import IconText from '../components/molecules/IconText';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import Text from '../components/atomics/Text';
+import TransitionAnimation from '../components/atomics/TransitionAnimation';
 
 const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const titleRef = useRef<HTMLDivElement>(null);
-  const bodyRef = useRef<HTMLDivElement>(null);
-
-  console.log(location.state?.method);
 
   return (
     <div css={signUpContainer}>
@@ -26,61 +23,35 @@ const SignUp = () => {
           size="xl"
           weight="lg"
           hover="toLeft"
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1)}
           style={{ letterSpacing: '1px' }}
         >
-          <SwitchTransition>
-            <CSSTransition
-              key={location.state?.method}
-              nodeRef={titleRef}
-              timeout={300}
-              classNames="rotateX"
-              unmountOnExit
-            >
-              <Text
-                ref={titleRef}
-                variant="primary"
-                size="lg"
-                weight="xl"
-                style={{ display: 'inline', marginLeft: '0.375rem' }}
-              >
-                {(() => {
-                  switch (location.state?.method) {
-                    case 'email':
-                      return '회원가입';
-                    case 'google':
-                      return '구글';
-                    case 'kakao':
-                      return '카카오';
-                    default:
-                      return '회원가입';
-                  }
-                })()}
-              </Text>
-            </CSSTransition>
-          </SwitchTransition>
-        </IconText>
-      </div>
-      <SwitchTransition>
-        <CSSTransition
-          key={location.state?.method}
-          nodeRef={bodyRef}
-          timeout={150}
-          classNames="toRight"
-          unmountOnExit
-        >
-          <div ref={bodyRef}>
+          <Text
+            ref={titleRef}
+            variant="primary"
+            size="lg"
+            weight="xl"
+            style={{ display: 'inline', marginLeft: '0.375rem' }}
+          >
             {(() => {
               switch (location.state?.method) {
                 case 'email':
-                  return <SignUpEmail />;
+                  return '회원가입';
+                case 'google':
+                  return '구글';
+                case 'kakao':
+                  return '카카오';
                 default:
-                  return <SignUpMethod />;
+                  return '회원가입';
               }
             })()}
-          </div>
-        </CSSTransition>
-      </SwitchTransition>
+          </Text>
+        </IconText>
+      </div>
+      <TransitionAnimation data-key={location.state?.method || ''} classNames="toRight">
+        <SignUpEmail key="email" />
+        <SignUpMethod key="" />
+      </TransitionAnimation>
     </div>
   );
 };

@@ -6,21 +6,22 @@ const animations = {
   toRight: css`
     .toRight-enter {
       opacity: 0;
-      transform: scale(0.95);
+      transform: translateX(100%);
     }
     .toRight-exit {
-      opacity: 0;
+      opacity: 1;
     }
     .toRight-enter-active {
       opacity: 1;
-      transform: scale(1);
+      transform: translateX(0);
     }
     .toRight-exit-active {
       opacity: 0;
+      transform: translateX(-100%);
     }
     .toRight-enter-active,
     .toRight-exit-active {
-      transition: all 150ms;
+      transition: all 300ms ease-in-out;
     }
   `,
   rotateX: css`
@@ -65,6 +66,9 @@ const GlobalStyle = () => {
             --breakpoint-lg: 992px;
             --breakpoint-xl: 1200px;
             --breakpoint-xxl: 1400px;
+          }
+          body {
+            overflow-x: hidden;
           }
         `,
         ...Object.values(animations),
