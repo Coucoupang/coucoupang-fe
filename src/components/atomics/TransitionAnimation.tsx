@@ -5,7 +5,7 @@ import React, { Key, ReactElement, useEffect, useRef, useState } from 'react';
 interface TransitionAnimation {
   ['data-key']: Key;
   wrapperCss?: Interpolation<Theme>;
-  classNames: string;
+  className: string;
   children: ReactElement[];
 }
 
@@ -26,17 +26,16 @@ const TransitionAnimation = (props: TransitionAnimation) => {
 
   useEffect(() => {
     childrenRef.current = props.children.map((child) => {
-      if (child.key === props['data-key']) setItems([child]);
-      return {
+      const ch: TransitionItem = {
         status: child.key === props['data-key'] ? 'VISIBLE' : 'HIDDEN',
         item: (
-          <div key={child.key} className="toRight" css={props.wrapperCss}>
+          <div key={child.key} className={props.className} css={props.wrapperCss}>
             {child}
           </div>
         ),
-        clone: null,
-        ref: null,
       };
+      if (child.key === props['data-key']) setItems([ch.item]);
+      return ch;
     });
   }, []);
 
@@ -49,20 +48,15 @@ const TransitionAnimation = (props: TransitionAnimation) => {
           const clone = React.cloneElement(child.item, {
             ref: (ref: HTMLDivElement) => {
               if (!ref) return;
-              ref.classList.remove('toRight');
-              ref.classList.add('toRight-enter');
+              ref.classList.remove(props.className, `${props.className}-exit`);
+              ref.classList.add(`${props.className}-enter`);
               ref.offsetTop;
-              ref.classList.remove('toRight-enter');
-              ref.classList.add('toRight');
-
-              ref.addEventListener('transitionend', (e) => {
-                if (e.target !== ref) return;
-                removeItem(clone);
-              });
+              ref.classList.remove(`${props.className}-enter`);
+              ref.classList.add(props.className);
             },
           });
 
-          setItems((items) => [...items, clone]);
+          setItems((items) => [...items.filter((item) => item.key !== child.item.key), clone]);
         }
         return true;
       }
@@ -78,7 +72,7 @@ const TransitionAnimation = (props: TransitionAnimation) => {
               ref: (ref: HTMLDivElement) => {
                 if (!ref) return;
                 ref.offsetTop;
-                ref.classList.add('toRight-exit');
+                ref.classList.add(`${props.className}-exit`);
                 ref.addEventListener('transitionend', (e) => {
                   if (e.target !== ref) return;
                   removeItem(clone);
@@ -86,7 +80,7 @@ const TransitionAnimation = (props: TransitionAnimation) => {
               },
             });
 
-            setItems((items) => [...items.filter((item) => item !== child.item), clone]);
+            setItems((items) => [...items.filter((item) => item.key !== child.item.key), clone]);
           }
           return true;
         }
