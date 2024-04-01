@@ -5,23 +5,31 @@ import Pretendard from '../assets/fonts/PretendardVariable.woff2';
 const animations = {
   toRight: css`
     .toRight-enter {
-      opacity: 0;
-      transform: translateX(100%);
+      opacity: 0 !important;
+
+      transform: translateX(100%) !important;
     }
+
     .toRight-exit {
+      opacity: 0 !important;
+
+      transform: translateX(-100%) !important;
+
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .toRight {
+      position: absolute;
+
+      width: 100%;
+      box-sizing: border-box;
+
       opacity: 1;
-    }
-    .toRight-enter-active {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .toRight-exit-active {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    .toRight-enter-active,
-    .toRight-exit-active {
-      transition: all 300ms ease-in-out;
+
+      transition: all 3000ms ease-in-out;
+
+      transform: none;
     }
   `,
   rotateX: css`
