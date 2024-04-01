@@ -49,7 +49,6 @@ const iconTextStyle = (isButton: boolean, palette: ColorPalette) => css`
   display: inline-flex;
   align-items: center;
   color: ${palette.color?.normal};
-  transition: all 150ms ease;
   ${isButton &&
   css`
     cursor: pointer;
