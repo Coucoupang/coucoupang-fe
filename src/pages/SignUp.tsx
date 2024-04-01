@@ -48,7 +48,13 @@ const SignUp = () => {
           </Text>
         </IconText>
       </div>
-      <TransitionAnimation data-key={location.state?.method || ''} classNames="toRight">
+      <TransitionAnimation
+        data-key={location.state?.method || ''}
+        classNames="toRight"
+        wrapperCss={css`
+          padding: 1rem;
+        `}
+      >
         <SignUpEmail key="email" />
         <SignUpMethod key="" />
       </TransitionAnimation>
@@ -57,13 +63,14 @@ const SignUp = () => {
 };
 
 const signUpContainer = () => css`
+  position: relative;
   max-width: var(--breakpoint-sm);
   margin: 0 auto;
-  padding: 1rem;
 `;
 
 const head = css`
   margin: 2rem 0;
+  padding: 1rem 1rem 0 1rem;
 `;
 
 export default SignUp;

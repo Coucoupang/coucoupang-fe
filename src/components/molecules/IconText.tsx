@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { ColorPalette, Theme, css, keyframes } from '@emotion/react';
-import Text from '../atomics/Text';
 import React, { ReactNode } from 'react';
 
 type hoverAnimation = 'toLeft' | 'toRight' | null;
