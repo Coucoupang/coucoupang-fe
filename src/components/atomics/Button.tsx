@@ -18,7 +18,7 @@ const buttonCss = (palette: ColorPalette, props: ButtonStyleProps) => css`
   justify-content: center;
   position: relative;
 
-  padding: 0.625rem 1.125rem;
+  padding: 0.75rem 1.125rem;
   border-radius: 0.125rem;
   word-break: keep-all;
 

@@ -43,7 +43,14 @@ const SingUpMethodTemplate = ({ signUpMethod }: SignUpMethodTemplateProps) => {
         </ButtonGroup>
       </Card>
       <div css={sellerContainer}>
-        <Text size="md">쿠쿠팡에서 판매를 원하세요?</Text>
+        <Text
+          size="md"
+          css={css`
+            padding-right: 1rem;
+          `}
+        >
+          쿠쿠팡에서 판매를 원하세요?
+        </Text>
         <Button variant="primary">판매자 가입하기</Button>
       </div>
     </div>
