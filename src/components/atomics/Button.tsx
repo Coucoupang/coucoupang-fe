@@ -8,7 +8,7 @@ interface ButtonStyleProps {
 
 interface ButtonProps extends ButtonStyleProps, React.ComponentProps<'button'> {
   variant: keyof Theme['colors'];
-  css?: Interpolation<Theme> | Interpolation<Theme>[];
+  css?: Interpolation<Theme>;
   children?: ReactNode;
 }
 
