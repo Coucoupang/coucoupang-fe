@@ -3,33 +3,29 @@ import { Global, css } from '@emotion/react';
 import Pretendard from '../assets/fonts/PretendardVariable.woff2';
 
 const animations = {
-  toRight: css`
-    .toRight-enter {
-      opacity: 0 !important;
+  popup: css`
+    .popup-enter {
+      transform: translateY(2.5rem) scale(0.9) !important;
 
-      transform: translateX(100%) !important;
+      opacity: 0 !important;
     }
 
-    .toRight-exit {
+    .popup-exit {
       opacity: 0 !important;
-
-      transform: translateX(-100%) !important;
 
       pointer-events: none;
       user-select: none;
     }
 
-    .toRight {
+    .popup {
       position: absolute;
 
       width: 100%;
       box-sizing: border-box;
 
+      transition: all 300ms ease;
+
       opacity: 1;
-
-      transition: all 3000ms ease-in-out;
-
-      transform: none;
     }
   `,
   rotateX: css`
@@ -74,6 +70,8 @@ const GlobalStyle = () => {
             --breakpoint-lg: 992px;
             --breakpoint-xl: 1200px;
             --breakpoint-xxl: 1400px;
+
+            -webkit-tap-highlight-color: transparent !important;
           }
           body {
             overflow-x: hidden;

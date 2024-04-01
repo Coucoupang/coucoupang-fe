@@ -50,9 +50,9 @@ const SignUp = () => {
       </div>
       <TransitionAnimation
         data-key={location.state?.method || ''}
-        classNames="toRight"
+        className="popup"
         wrapperCss={css`
-          padding: 1rem;
+          padding: 2rem;
         `}
       >
         <SignUpEmail key="email" />
@@ -64,6 +64,7 @@ const SignUp = () => {
 
 const signUpContainer = () => css`
   position: relative;
+
   max-width: var(--breakpoint-sm);
   margin: 0 auto;
 `;
@@ -71,6 +72,10 @@ const signUpContainer = () => css`
 const head = css`
   margin: 2rem 0;
   padding: 1rem 1rem 0 1rem;
+
+  @media (max-width: 768px) {
+    margin: 1rem 0 !important;
+  }
 `;
 
 export default SignUp;
