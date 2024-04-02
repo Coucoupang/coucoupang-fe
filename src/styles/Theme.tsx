@@ -34,6 +34,7 @@ declare module '@emotion/react' {
   export interface Theme {
     fontSize: Size;
     fontWeight: Size;
+    breakPoint: Size;
     colors: {
       primary: PaletteCategory;
       secondary: PaletteCategory;
@@ -57,18 +58,25 @@ const LightTheme: Theme = {
     xl: '700',
     xxl: '800',
   },
+  breakPoint: {
+    sm: '576px',
+    md: '768px',
+    lg: '992px',
+    xl: '1200px',
+    xxl: '1400px',
+  },
   colors: {
     primary: {
       button: {
         border: {
-          normal: '#ff0038',
-          hover: '#ff0038',
+          normal: '#ff3e3e',
+          hover: '#ff3e3e',
           active: '#db0030',
           disabled: '#fd7373',
         },
         background: {
-          normal: '#ff0038',
-          hover: '#ff0038',
+          normal: '#ff3e3e',
+          hover: '#ff3e3e',
           active: '#db0030',
           disabled: '#fd7373',
         },
@@ -123,7 +131,7 @@ const LightTheme: Theme = {
       button: {
         border: {
           normal: '#525252',
-          hover: '#ff0038',
+          hover: '#ff3e3e',
           active: '#db0030',
           disabled: '#fd7373',
         },
@@ -146,7 +154,7 @@ const LightTheme: Theme = {
       textfield: {
         border: {
           normal: '#ccc',
-          focus: '#ff0038',
+          focus: '#ff3e3e',
           disabled: '#bbb',
         },
         background: {
@@ -206,7 +214,7 @@ const LightTheme: Theme = {
       textfield: {
         border: {
           normal: '#ccc',
-          focus: '#ff0038',
+          focus: '#ff3e3e',
           disabled: '#bbb',
         },
         background: {
