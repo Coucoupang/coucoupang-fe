@@ -21,7 +21,7 @@ const progressCss = (value: number) => css`
 
 const formContainer = css`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   flex-direction: column;
   gap: 1rem;
 
@@ -32,7 +32,6 @@ const formContainer = css`
 
 const emailContainer = (theme: Theme) => css`
   display: flex;
-  justify-content: space-between;
   gap: 1rem;
 
   @media (max-width: ${theme.breakPoint.sm}) {
@@ -41,7 +40,7 @@ const emailContainer = (theme: Theme) => css`
 `;
 
 const signUpCss = (theme: Theme) => css`
-  width: 8rem;
+  width: 7rem;
   @media (max-width: ${theme.breakPoint.sm}) {
     width: 100%;
   }
@@ -49,6 +48,7 @@ const signUpCss = (theme: Theme) => css`
 
 const SignUpEmail = () => {
   const [progress, setProgress] = useState<number>(0);
+
   return (
     <div>
       <div css={() => progressCss(progress)}></div>
@@ -79,12 +79,10 @@ const SignUpEmail = () => {
               onFocus={() => setProgress(3 / 4)}
             />
           </div>
-          <Button variant="secondary" boxShadow={false}>
-            이메일 인증하기
-          </Button>
+          <Button variant="secondary">인증하기</Button>
         </div>
         <TextField type="text" variant="primary" label="닉네임" onFocus={() => setProgress(1)} />
-        <Button variant="primary" css={(theme) => signUpCss(theme)} boxShadow={false}>
+        <Button variant="primary" css={(theme) => signUpCss(theme)}>
           가입하기
         </Button>
       </div>
