@@ -2,7 +2,7 @@
 import { ColorPalette, Theme, css } from '@emotion/react';
 import React, { useEffect, useRef, useState } from 'react';
 
-interface TextFieldProps {
+interface TextFieldProps extends React.ComponentProps<'input'> {
   variant: keyof Theme['colors'];
   type?: string;
   width?: string;
@@ -18,6 +18,10 @@ const TextField: React.FC<TextFieldProps> = ({
   label = '',
   disabled = false,
   children = '',
+  onChange,
+  onFocus,
+  onBlur,
+  ...props
 }: TextFieldProps) => {
   const [focus, setFocus] = useState<boolean>(false);
   const valueRef = useRef<string | undefined>(children);
@@ -45,11 +49,21 @@ const TextField: React.FC<TextFieldProps> = ({
         ref={textRef}
         type={type}
         style={{ width }}
-        onChange={() => (valueRef.current = textRef.current?.value)}
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
+        onChange={(e) => {
+          valueRef.current = textRef.current?.value;
+          if (onChange) onChange(e);
+        }}
+        onFocus={(e) => {
+          setFocus(true);
+          if (onFocus) onFocus(e);
+        }}
+        onBlur={(e) => {
+          setFocus(false);
+          if (onBlur) onBlur(e);
+        }}
         css={(theme) => textFieldStyle(theme.colors[variant].textfield, !!label)}
         disabled={disabled}
+        {...props}
       />
     </div>
   );
