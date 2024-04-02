@@ -1,13 +1,29 @@
 /** @jsxImportSource @emotion/react */
 import React, { useRef } from 'react';
 import SignUpMethod from './SignUpMethod';
-import { css } from '@emotion/react';
+import { Theme, css } from '@emotion/react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SignUpEmail from './SignUpEmail';
 import IconText from '../components/molecules/IconText';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import Text from '../components/atomics/Text';
 import TransitionAnimation from '../components/atomics/TransitionAnimation';
+
+const signUpContainer = css`
+  position: relative;
+
+  max-width: var(--breakpoint-sm);
+  margin: 0 auto;
+`;
+
+const head = (theme: Theme) => css`
+  margin-top: 2rem;
+  padding: 1rem 1rem 0 1rem;
+
+  @media (max-width: ${theme.breakPoint.md}) {
+    margin-top: 1rem !important;
+  }
+`;
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -16,7 +32,7 @@ const SignUp = () => {
 
   return (
     <div css={signUpContainer}>
-      <div css={head}>
+      <div css={(theme) => head(theme)}>
         <IconText
           variant="primary"
           icon={<MdKeyboardArrowLeft size={24} />}
@@ -61,21 +77,5 @@ const SignUp = () => {
     </div>
   );
 };
-
-const signUpContainer = () => css`
-  position: relative;
-
-  max-width: var(--breakpoint-sm);
-  margin: 0 auto;
-`;
-
-const head = css`
-  margin: 2rem 0;
-  padding: 1rem 1rem 0 1rem;
-
-  @media (max-width: 768px) {
-    margin: 1rem 0 !important;
-  }
-`;
 
 export default SignUp;
