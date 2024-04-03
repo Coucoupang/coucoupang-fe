@@ -48,7 +48,7 @@ const buttonCss = (palette: ColorPalette) => css`
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({ variant, css, ...props }: ButtonProps) => {
+const Button = ({ variant, css, ...props }: ButtonProps) => {
   const theme = useTheme();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { ripple } = useRipple<HTMLButtonElement>({

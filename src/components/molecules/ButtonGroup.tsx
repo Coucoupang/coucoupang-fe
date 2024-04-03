@@ -8,18 +8,6 @@ interface ButtonGroupProps extends React.ComponentProps<'div'> {
   children?: ReactNode;
 }
 
-const ButtonGroup: React.FC<ButtonGroupProps> = ({
-  vertical = false,
-  separatorColor = '',
-  ...props
-}: ButtonGroupProps) => {
-  return (
-    <div style={props.style} css={buttonGroupStyle(vertical, separatorColor)} {...props}>
-      {props.children}
-    </div>
-  );
-};
-
 const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
   display: flex;
 
@@ -99,5 +87,13 @@ const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
         }
       `}
 `;
+
+const ButtonGroup = ({ vertical = false, separatorColor = '', ...props }: ButtonGroupProps) => {
+  return (
+    <div style={props.style} css={buttonGroupStyle(vertical, separatorColor)} {...props}>
+      {props.children}
+    </div>
+  );
+};
 
 export default ButtonGroup;

@@ -9,6 +9,11 @@ interface TextProps extends React.ComponentProps<'div'> {
   children?: ReactNode;
 }
 
+const textStyle = (palette: ColorPalette) => css`
+  color: ${palette.color!.normal};
+  word-break: keep-all;
+`;
+
 const Text = React.forwardRef<HTMLDivElement, TextProps>(
   ({ variant = 'primary', weight = 'md', size, style, ...props }: TextProps, ref) => {
     const theme = useTheme();
@@ -30,10 +35,4 @@ const Text = React.forwardRef<HTMLDivElement, TextProps>(
 );
 
 Text.displayName = 'Text';
-
-const textStyle = (palette: ColorPalette) => css`
-  color: ${palette.color!.normal};
-  word-break: keep-all;
-`;
-
 export default Text;

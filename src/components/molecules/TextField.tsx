@@ -11,64 +11,6 @@ interface TextFieldProps extends React.ComponentProps<'input'> {
   children?: string;
 }
 
-const TextField: React.FC<TextFieldProps> = ({
-  variant,
-  type = 'text',
-  width = '100%',
-  label = '',
-  disabled = false,
-  children = '',
-  onChange,
-  onFocus,
-  onBlur,
-  ...props
-}: TextFieldProps) => {
-  const [focus, setFocus] = useState<boolean>(false);
-  const valueRef = useRef<string | undefined>(children);
-  const textRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    valueRef.current = children;
-    if (textRef.current) textRef.current.value = valueRef.current;
-  }, [children]);
-
-  return (
-    <div css={container} onClick={() => textRef.current?.focus()}>
-      {label && (
-        <span
-          css={(theme) =>
-            valueRef.current || focus
-              ? floatLabel(theme.colors[variant].textfield, focus, disabled)
-              : normalLabel(theme.colors[variant].textfield, disabled)
-          }
-        >
-          {label}
-        </span>
-      )}
-      <input
-        ref={textRef}
-        type={type}
-        style={{ width }}
-        onChange={(e) => {
-          valueRef.current = textRef.current?.value;
-          if (onChange) onChange(e);
-        }}
-        onFocus={(e) => {
-          setFocus(true);
-          if (onFocus) onFocus(e);
-        }}
-        onBlur={(e) => {
-          setFocus(false);
-          if (onBlur) onBlur(e);
-        }}
-        css={(theme) => textFieldStyle(theme.colors[variant].textfield, !!label)}
-        disabled={disabled}
-        {...props}
-      />
-    </div>
-  );
-};
-
 const container = () => css`
   position: relative;
 `;
@@ -128,5 +70,63 @@ const floatLabel = (palette: ColorPalette, focus: boolean, disabled: boolean) =>
     color: ${palette.border?.focus};
   `}
 `;
+
+const TextField = ({
+  variant,
+  type = 'text',
+  width = '100%',
+  label = '',
+  disabled = false,
+  children = '',
+  onChange,
+  onFocus,
+  onBlur,
+  ...props
+}: TextFieldProps) => {
+  const [focus, setFocus] = useState<boolean>(false);
+  const valueRef = useRef<string | undefined>(children);
+  const textRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    valueRef.current = children;
+    if (textRef.current) textRef.current.value = valueRef.current;
+  }, [children]);
+
+  return (
+    <div css={container} onClick={() => textRef.current?.focus()}>
+      {label && (
+        <span
+          css={(theme) =>
+            valueRef.current || focus
+              ? floatLabel(theme.colors[variant].textfield, focus, disabled)
+              : normalLabel(theme.colors[variant].textfield, disabled)
+          }
+        >
+          {label}
+        </span>
+      )}
+      <input
+        ref={textRef}
+        type={type}
+        style={{ width }}
+        onChange={(e) => {
+          valueRef.current = textRef.current?.value;
+          if (onChange) onChange(e);
+        }}
+        onFocus={(e) => {
+          setFocus(true);
+          if (onFocus) onFocus(e);
+        }}
+        onBlur={(e) => {
+          setFocus(false);
+          if (onBlur) onBlur(e);
+        }}
+        css={(theme) => textFieldStyle(theme.colors[variant].textfield, !!label)}
+        disabled={disabled}
+        {...props}
+      />
+    </div>
+  );
+};
 
 export default TextField;

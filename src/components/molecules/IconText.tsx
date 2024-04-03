@@ -13,28 +13,6 @@ interface IconTextProps extends React.ComponentProps<'span'> {
   hover?: hoverAnimation;
 }
 
-const IconText: React.FC<IconTextProps> = ({
-  variant,
-  size,
-  weight = 'md',
-  icon,
-  hover = null,
-  ...props
-}: IconTextProps) => {
-  return (
-    <span
-      css={[
-        (theme) => iconTextStyle(props.onClick !== null, theme.colors[variant].text),
-        iconAnimation(hover),
-      ]}
-      {...props}
-    >
-      {icon}
-      {props.children}
-    </span>
-  );
-};
-
 const toLeft = keyframes`
   from, to {
     transform: translateX(0);
@@ -63,5 +41,27 @@ const iconAnimation = (name: hoverAnimation) => css`
     }
   `}
 `;
+
+const IconText = ({
+  variant,
+  size,
+  weight = 'md',
+  icon,
+  hover = null,
+  ...props
+}: IconTextProps) => {
+  return (
+    <span
+      css={[
+        (theme) => iconTextStyle(props.onClick !== null, theme.colors[variant].text),
+        iconAnimation(hover),
+      ]}
+      {...props}
+    >
+      {icon}
+      {props.children}
+    </span>
+  );
+};
 
 export default IconText;

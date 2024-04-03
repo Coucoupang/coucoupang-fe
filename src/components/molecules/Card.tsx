@@ -11,25 +11,6 @@ interface CardProps extends React.ComponentProps<'div'> {
   children?: ReactNode;
 }
 
-const Card: React.FC<CardProps> = ({
-  variant,
-  width,
-  height,
-  border,
-  hover,
-  children,
-  ...props
-}: CardProps) => {
-  return (
-    <div
-      style={{ width, height, ...props.style }}
-      css={(theme) => cardStyle({ hover, border }, theme.colors[variant].card)}
-    >
-      {children}
-    </div>
-  );
-};
-
 const cardStyle = (props: Partial<CardProps>, palette: ColorPalette) => css`
   position: relative;
   padding: 0.625rem 1.125rem;
@@ -50,5 +31,16 @@ const cardStyle = (props: Partial<CardProps>, palette: ColorPalette) => css`
   `}
   transition: all 150ms ease;
 `;
+
+const Card = ({ variant, width, height, border, hover, children, ...props }: CardProps) => {
+  return (
+    <div
+      style={{ width, height, ...props.style }}
+      css={(theme) => cardStyle({ hover, border }, theme.colors[variant].card)}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default Card;
