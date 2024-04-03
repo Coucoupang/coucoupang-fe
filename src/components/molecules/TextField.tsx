@@ -29,7 +29,7 @@ const TextField: React.FC<TextFieldProps> = ({
 
   useEffect(() => {
     valueRef.current = children;
-    textRef.current!.value = valueRef.current;
+    if (textRef.current) textRef.current.value = valueRef.current;
   }, [children]);
 
   return (
