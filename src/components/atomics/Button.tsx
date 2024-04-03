@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { ColorPalette, Interpolation, Theme, css } from '@emotion/react';
+import { ColorPalette, Interpolation, Theme, css, useTheme } from '@emotion/react';
 import React, { ReactNode, useRef } from 'react';
 import useRipple from '../../hooks/useRipple';
 
@@ -49,8 +49,13 @@ const buttonCss = (palette: ColorPalette) => css`
 `;
 
 const Button: React.FC<ButtonProps> = ({ variant, css, ...props }: ButtonProps) => {
+  const theme = useTheme();
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const { ripple } = useRipple<HTMLButtonElement>({ ref: buttonRef });
+  const { ripple } = useRipple<HTMLButtonElement>({
+    ref: buttonRef,
+    color: theme.colors[variant].button.ripple,
+    duration: 1000,
+  });
 
   return (
     <button

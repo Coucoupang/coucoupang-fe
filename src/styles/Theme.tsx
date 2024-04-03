@@ -14,6 +14,7 @@ declare module '@emotion/react' {
     border?: PseudoClass;
     background?: PseudoClass;
     boxShadow?: PseudoClass;
+    ripple?: string;
   }
 
   interface PaletteCategory {
@@ -86,9 +87,7 @@ const LightTheme: Theme = {
           active: '#fff',
           disabled: '#f3f3f3',
         },
-        boxShadow: {
-          hover: '#aaa',
-        },
+        ripple: '#ffffff54',
       },
       textfield: {
         border: {
@@ -147,9 +146,7 @@ const LightTheme: Theme = {
           active: '#fff',
           disabled: '#f3f3f3',
         },
-        boxShadow: {
-          hover: '#aaa',
-        },
+        ripple: '#83838352',
       },
       textfield: {
         border: {
@@ -207,9 +204,7 @@ const LightTheme: Theme = {
           active: '#fff',
           disabled: '#8f8f8f',
         },
-        boxShadow: {
-          hover: '#aaa',
-        },
+        ripple: '#ffffff54',
       },
       textfield: {
         border: {
