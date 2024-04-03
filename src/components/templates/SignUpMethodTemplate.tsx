@@ -32,7 +32,6 @@ const SingUpMethodTemplate = ({ signUpMethod }: SignUpMethodTemplateProps) => {
             <Button
               variant="light"
               style={{ height: '4.5rem', justifyContent: 'flex-start' }}
-              boxShadow={false}
               key={method.method}
               onClick={() => navigate('/signup', { state: { method: method.method } })}
             >

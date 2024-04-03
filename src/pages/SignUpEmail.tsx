@@ -79,12 +79,10 @@ const SignUpEmail = () => {
               onFocus={() => setProgress(3 / 4)}
             />
           </div>
-          <Button variant="secondary" boxShadow={false}>
-            이메일 인증하기
-          </Button>
+          <Button variant="secondary">인증하기</Button>
         </div>
         <TextField type="text" variant="primary" label="닉네임" onFocus={() => setProgress(1)} />
-        <Button variant="primary" css={(theme) => signUpCss(theme)} boxShadow={false}>
+        <Button variant="primary" css={(theme) => signUpCss(theme)}>
           가입하기
         </Button>
       </div>

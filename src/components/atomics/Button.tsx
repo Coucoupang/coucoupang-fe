@@ -1,19 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { ColorPalette, Interpolation, Theme, css } from '@emotion/react';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useRef } from 'react';
+import useRipple from '../../hooks/useRipple';
 
-interface ButtonStyleProps {
-  boxShadow?: boolean;
-}
-
-interface ButtonProps extends ButtonStyleProps, React.ComponentProps<'button'> {
+interface ButtonProps extends React.ComponentProps<'button'> {
   variant: keyof Theme['colors'];
   css?: Interpolation<Theme>;
   children?: ReactNode;
 }
 
-const buttonCss = (palette: ColorPalette, props: ButtonStyleProps) => css`
+const buttonCss = (palette: ColorPalette) => css`
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -25,6 +23,7 @@ const buttonCss = (palette: ColorPalette, props: ButtonStyleProps) => css`
   transition: all 150ms ease;
 
   cursor: pointer;
+  user-select: none;
 
   :enabled {
     border: 1px solid ${palette.border?.normal};
@@ -37,15 +36,6 @@ const buttonCss = (palette: ColorPalette, props: ButtonStyleProps) => css`
       border: 1px solid ${palette.border?.hover} !important;
 
       background-color: ${palette.background?.hover};
-      ::after {
-        opacity: 1;
-      }
-    }
-
-    :active {
-      border: 1px solid ${palette.border?.active};
-
-      background-color: ${palette.background?.active};
     }
   }
 
@@ -55,45 +45,21 @@ const buttonCss = (palette: ColorPalette, props: ButtonStyleProps) => css`
     background-color: ${palette.background?.disabled};
 
     color: ${palette.color?.disabled};
-
-    ::after {
-      display: none;
-    }
-  }
-
-  ::after {
-    ${!props.boxShadow &&
-    css`
-      display: none;
-    `}
-
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    box-shadow: 0 0 6px ${palette.boxShadow?.hover};
-
-    transition: opacity 150ms ease;
-
-    opacity: 0;
-    content: '';
   }
 `;
 
-const Button: React.FC<ButtonProps> = ({
-  variant,
-  css,
-  boxShadow = true,
-  ...props
-}: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ variant, css, ...props }: ButtonProps) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const { ripple } = useRipple<HTMLButtonElement>({ ref: buttonRef });
+
   return (
     <button
-      css={(theme) => [css, buttonCss(theme.colors[variant].button, { boxShadow })]}
+      ref={buttonRef}
+      css={(theme) => [css, buttonCss(theme.colors[variant].button)]}
       {...props}
     >
       {props.children}
+      {ripple}
     </button>
   );
 };
