@@ -60,14 +60,13 @@ const useRipple = <T extends HTMLElement>({
       setRipples((ripples) => [...ripples, ripple]);
     };
 
-    const handleMouseUp = (e: MouseEvent) => {
+    const handleMouseUp = () => {
       if (!ripplesRef.current.length) return;
       const ref = ripplesRef.current[ripplesRef.current.length - 1];
       ref.style.opacity = '0';
 
       ref.addEventListener('transitionend', (e) => {
         if (ripplesRef.current[0] !== e.target) return;
-        console.log(e);
         ripplesRef.current.shift();
         setRipples((ripples) => ripples.slice(1));
       });
