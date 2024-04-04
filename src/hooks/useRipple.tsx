@@ -66,7 +66,7 @@ const useRipple = <T extends HTMLElement>({
       ref.style.opacity = '0';
 
       ref.addEventListener('transitionend', (e) => {
-        if (ripplesRef.current[0] !== e.target) return;
+        if (ripplesRef.current[0] !== e.target || e.propertyName !== 'opacity') return;
         ripplesRef.current.shift();
         setRipples((ripples) => ripples.slice(1));
       });
