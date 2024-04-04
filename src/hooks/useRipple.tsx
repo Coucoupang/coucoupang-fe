@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { css, keyframes } from '@emotion/react';
-import React, { useEffect, useState } from 'react';
+import { css } from '@emotion/react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface useRippleProps<T> {
   ref: React.RefObject<T>;
@@ -8,27 +8,14 @@ interface useRippleProps<T> {
   duration?: number;
 }
 
-const rippleAnimation = keyframes`
-  from {
-    opacity: 1;
-
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-
-    transform: scale(16);
-  }
-`;
-
 const rippleCss = (duration: number) => css`
   position: absolute;
 
   border-radius: 50%;
 
-  opacity: 0;
+  opacity: 1;
 
-  animation: ${rippleAnimation} ${duration}ms ease;
+  transition: all ${duration}ms ease;
 
   pointer-events: none;
 `;
@@ -39,6 +26,7 @@ const useRipple = <T extends HTMLElement>({
   duration = 1000,
 }: useRippleProps<T>) => {
   const [ripples, setRipples] = useState<React.ReactElement[]>([]);
+  const ripplesRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -46,21 +34,23 @@ const useRipple = <T extends HTMLElement>({
     const handleMouseDown = (e: MouseEvent) => {
       if (!(e.target instanceof HTMLElement)) return;
       const rect = e.target.getBoundingClientRect();
-
+      const size = Math.max(e.target.offsetWidth, e.target.offsetHeight) / 8;
       const ripple = (
         <div
           ref={(ref) => {
-            ref?.addEventListener('animationend', (e) => {
-              if (e.target !== ref) return;
-              setRipples((ripples) => ripples.slice(1));
-            });
+            if (!ref) return;
+            ref.offsetHeight;
+            ref.style.borderRadius = '0';
+            ref.style.transform = 'scale(16)';
+            ref.style.opacity = '1';
+            ripplesRef.current.push(ref);
           }}
           css={rippleCss(duration)}
           style={{
-            top: `${e.clientY - rect.top}px`,
-            left: `${e.clientX - rect.left}px`,
-            width: `${Math.max(e.target.offsetWidth, e.target.offsetHeight) / 8}px`,
-            height: `${Math.max(e.target.offsetWidth, e.target.offsetHeight) / 8}px`,
+            top: `${e.clientY - rect.top - size / 2}px`,
+            left: `${e.clientX - rect.left - size / 2}px`,
+            width: `${size}px`,
+            height: `${size}px`,
             backgroundColor: color,
           }}
           key={Number(ripples.at(-1)?.key || 0) + 1}
@@ -70,10 +60,27 @@ const useRipple = <T extends HTMLElement>({
       setRipples((ripples) => [...ripples, ripple]);
     };
 
+    const handleMouseUp = (e: MouseEvent) => {
+      if (!ripplesRef.current.length) return;
+      const ref = ripplesRef.current[ripplesRef.current.length - 1];
+      ref.style.opacity = '0';
+
+      ref.addEventListener('transitionend', (e) => {
+        if (ripplesRef.current[0] !== e.target) return;
+        console.log(e);
+        ripplesRef.current.shift();
+        setRipples((ripples) => ripples.slice(1));
+      });
+    };
+
     ref.current.addEventListener('mousedown', handleMouseDown);
+    ref.current.addEventListener('mouseup', handleMouseUp);
+    ref.current.addEventListener('mouseout', handleMouseUp);
 
     return () => {
       ref.current?.removeEventListener('mousedown', handleMouseDown);
+      ref.current?.removeEventListener('mouseup', handleMouseUp);
+      ref.current?.removeEventListener('mouseout', handleMouseUp);
     };
   }, [ref.current, ripples]);
 
