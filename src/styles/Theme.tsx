@@ -19,6 +19,7 @@ declare module '@emotion/react' {
 
   interface PaletteCategory {
     button: ColorPalette;
+    iconbutton: ColorPalette;
     textfield: ColorPalette;
     card: ColorPalette;
     text: ColorPalette;
@@ -89,6 +90,12 @@ const LightTheme: Theme = {
         },
         ripple: '#ffffff54',
       },
+      iconbutton: {
+        background: {
+          normal: '#ff3132',
+          hover: '#ff02a4',
+        },
+      },
       textfield: {
         border: {
           normal: '#ccc',
@@ -148,6 +155,12 @@ const LightTheme: Theme = {
         },
         ripple: '#83838352',
       },
+      iconbutton: {
+        background: {
+          normal: '#ff3132',
+          hover: '#ff02a4',
+        },
+      },
       textfield: {
         border: {
           normal: '#ccc',
@@ -205,6 +218,12 @@ const LightTheme: Theme = {
           disabled: '#8f8f8f',
         },
         ripple: '#ffffff54',
+      },
+      iconbutton: {
+        background: {
+          normal: '#ff3132',
+          hover: '#ff02a4',
+        },
       },
       textfield: {
         border: {
