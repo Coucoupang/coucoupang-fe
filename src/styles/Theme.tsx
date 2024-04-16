@@ -23,6 +23,7 @@ declare module '@emotion/react' {
     textfield: ColorPalette;
     card: ColorPalette;
     text: ColorPalette;
+    placeholder: ColorPalette;
   }
 
   interface Size {
@@ -131,6 +132,11 @@ const LightTheme: Theme = {
           normal: '#000',
         },
       },
+      placeholder: {
+        color: {
+          normal: '#646F7C',
+        },
+      },
     },
 
     secondary: {
@@ -195,6 +201,11 @@ const LightTheme: Theme = {
           normal: '#000',
         },
       },
+      placeholder: {
+        color: {
+          normal: '#646F7C',
+        },
+      },
     },
 
     light: {
@@ -257,6 +268,11 @@ const LightTheme: Theme = {
       text: {
         color: {
           normal: '#000',
+        },
+      },
+      placeholder: {
+        color: {
+          normal: '#646F7C',
         },
       },
     },

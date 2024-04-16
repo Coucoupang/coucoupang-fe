@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { ColorPalette, Interpolation, Theme, css, useTheme } from '@emotion/react';
+import { ColorPalette, Interpolation, Theme, css } from '@emotion/react';
 import React, { ReactNode, useRef } from 'react';
 
 interface IconButtonProps extends React.ComponentProps<'button'> {
@@ -48,9 +48,6 @@ const iconButtonCss = (palette: ColorPalette) => css`
 
 const IconButton = ({ variant, css, ...props }: IconButtonProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const theme = useTheme();
-  console.log(theme.colors.primary.iconbutton.background?.normal);
-  console.log(theme.colors.primary.iconbutton.background?.hover);
   return (
     <button
       ref={buttonRef}
