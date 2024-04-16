@@ -24,6 +24,7 @@ declare module '@emotion/react' {
     card: ColorPalette;
     text: ColorPalette;
     placeholder: ColorPalette;
+    select: ColorPalette;
   }
 
   interface Size {
@@ -137,6 +138,11 @@ const LightTheme: Theme = {
           normal: '#646F7C',
         },
       },
+      select: {
+        background: {
+          normal: '#f5f7f8',
+        },
+      },
     },
 
     secondary: {
@@ -206,6 +212,11 @@ const LightTheme: Theme = {
           normal: '#646F7C',
         },
       },
+      select: {
+        background: {
+          normal: '#f5f7f8',
+        },
+      },
     },
 
     light: {
@@ -273,6 +284,11 @@ const LightTheme: Theme = {
       placeholder: {
         color: {
           normal: '#646F7C',
+        },
+      },
+      select: {
+        background: {
+          normal: '#f5f7f8',
         },
       },
     },
