@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import React, { ReactNode } from 'react';
 import { css } from '@emotion/react';
-import Text from '../atomics/Text';
-import Button from '../atomics/Button';
-import ButtonGroup from '../molecules/ButtonGroup';
+import Text from '../common/Text';
+import Button from '../common/Button';
+import ButtonGroup from '../common/ButtonGroup';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import Card from '../molecules/Card';
+import Card from '../common/Card';
 import { useNavigate } from 'react-router-dom';
 
 interface SignUpMethod {
@@ -13,11 +13,11 @@ interface SignUpMethod {
   method: string;
 }
 
-interface SignUpMethodTemplateProps {
+interface SignUpMethodProps {
   signUpMethod: SignUpMethod[];
 }
 
-const SingUpMethodTemplate = ({ signUpMethod }: SignUpMethodTemplateProps) => {
+const SingUpMethod = ({ signUpMethod }: SignUpMethodProps) => {
   const navigate = useNavigate();
 
   return (
@@ -70,4 +70,4 @@ const sellerContainer = css`
   margin: 2rem 0;
 `;
 
-export default SingUpMethodTemplate;
+export default SingUpMethod;
