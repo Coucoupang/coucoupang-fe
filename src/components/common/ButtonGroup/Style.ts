@@ -1,14 +1,6 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import React, { ReactNode } from 'react';
 
-interface ButtonGroupProps extends React.ComponentProps<'div'> {
-  vertical?: boolean;
-  separatorColor?: string;
-  children?: ReactNode;
-}
-
-const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
+export const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
   display: flex;
 
   ${vertical
@@ -87,13 +79,3 @@ const buttonGroupStyle = (vertical: boolean, separatorColor: string) => css`
         }
       `}
 `;
-
-const ButtonGroup = ({ vertical = false, separatorColor = '', ...props }: ButtonGroupProps) => {
-  return (
-    <div style={props.style} css={buttonGroupStyle(vertical, separatorColor)} {...props}>
-      {props.children}
-    </div>
-  );
-};
-
-export default ButtonGroup;

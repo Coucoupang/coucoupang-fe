@@ -5,7 +5,7 @@ import Text from '../common/Text';
 import Button from '../common/Button';
 import ButtonGroup from '../common/ButtonGroup';
 import { MdKeyboardArrowRight } from 'react-icons/md';
-import Card from '../common/Card';
+import Card from '../common/Card/Card';
 import { useNavigate } from 'react-router-dom';
 
 interface SignUpMethod {
