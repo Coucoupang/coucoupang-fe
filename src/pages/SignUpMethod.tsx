@@ -1,9 +1,9 @@
 import React from 'react';
-import SingUpMethodTemplate from '../components/templates/SignUpMethodTemplate';
+import SingUpMethod from '../components/SignUpMethod/SignUpMethod';
 
 const SignUpMethod = () => {
   return (
-    <SingUpMethodTemplate
+    <SingUpMethod
       signUpMethod={[
         { name: '이메일로 가입하기', method: 'email' },
         {
