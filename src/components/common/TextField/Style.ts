@@ -17,36 +17,6 @@ const textFieldTheme = {
         disabled: '#6d6d6d',
       },
     },
-    secondary: {
-      border: {
-        normal: '#ccc',
-        focus: '#ff3e3e',
-        disabled: '#bbb',
-      },
-      background: {
-        normal: '#fff',
-        disabled: '#eee',
-      },
-      color: {
-        normal: '#000',
-        disabled: '#6d6d6d',
-      },
-    },
-    light: {
-      border: {
-        normal: '#ccc',
-        focus: '#ff3e3e',
-        disabled: '#bbb',
-      },
-      background: {
-        normal: '#fff',
-        disabled: '#eee',
-      },
-      color: {
-        normal: '#000',
-        disabled: '#6d6d6d',
-      },
-    },
   },
 };
 
@@ -54,11 +24,7 @@ export const container = () => css`
   position: relative;
 `;
 
-export const textFieldStyle = (
-  label: boolean,
-  theme: 'light',
-  variant: 'primary' | 'secondary' | 'light',
-) => css`
+export const textFieldStyle = (theme: 'light', variant: 'primary', label: boolean) => css`
   ${label
     ? css`
         padding: 1.5rem 0.625rem 0.5rem 0.625rem;
@@ -89,11 +55,7 @@ export const textFieldStyle = (
   outline: none;
 `;
 
-export const normalLabel = (
-  disabled: boolean,
-  theme: 'light',
-  variant: 'primary' | 'secondary' | 'light',
-) => css`
+export const normalLabel = (theme: 'light', variant: 'primary', disabled: boolean) => css`
   position: absolute;
   top: 50%;
 
@@ -112,10 +74,10 @@ export const normalLabel = (
 `;
 
 export const floatLabel = (
+  theme: 'light',
+  variant: 'primary',
   focus: boolean,
   disabled: boolean,
-  theme: 'light',
-  variant: 'primary' | 'secondary' | 'light',
 ) => css`
   position: absolute;
   top: 0.375rem;

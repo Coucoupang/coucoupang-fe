@@ -1,10 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import { Theme, css } from '@emotion/react';
 import React, { useEffect, useRef, useState } from 'react';
-import { container, textFieldStyle, floatLabel, normalLabel } from './Style';
+import { container, floatLabel, normalLabel, textFieldStyle } from './Style';
 
 interface TextFieldProps extends React.ComponentProps<'input'> {
-  variant: 'primary' | 'secondary' | 'light';
+  variant: 'primary';
   type?: string;
   width?: string;
   label?: string;
@@ -41,8 +40,8 @@ const TextField = ({
         <span
           css={(theme) =>
             valueRef.current || focus
-              ? floatLabel(focus, disabled, theme.name, variant)
-              : normalLabel(disabled, theme.name, variant)
+              ? floatLabel(theme.name, variant, focus, disabled)
+              : normalLabel(theme.name, variant, disabled)
           }
         >
           {label}
@@ -64,7 +63,7 @@ const TextField = ({
           setFocus(false);
           if (onBlur) onBlur(e);
         }}
-        css={(theme) => textFieldStyle(!!label, theme.name, variant)}
+        css={(theme) => textFieldStyle(theme.name, variant, !!label)}
         placeholder={label === '' ? placeholder : ''}
         disabled={disabled}
         {...props}
