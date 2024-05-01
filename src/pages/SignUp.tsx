@@ -4,10 +4,10 @@ import SignUpMethod from './SignUpMethod';
 import { Theme, css } from '@emotion/react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SignUpEmail from './SignUpEmail';
-import IconText from '../components/molecules/IconText';
+import IconText from '../components/SignUp/IconText';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
-import Text from '../components/atomics/Text';
-import TransitionAnimation from '../components/atomics/TransitionAnimation';
+import TransitionAnimation from '../components/common/TransitionAnimation';
+import Text from '../components/common/Text';
 
 const signUpContainer = css`
   position: relative;
