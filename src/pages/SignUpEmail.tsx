@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from 'react';
-import TextField from '../components/molecules/TextField';
 import { Theme, css } from '@emotion/react';
+import { useState } from 'react';
 import Lottie from 'react-lottie';
 import * as Pencil from '../assets/lotties/pencil.json';
-import Button from '../components/atomics/Button';
+import Button from '../components/common/Button';
+import TextField from '../components/common/TextField';
+import React from 'react';
 
 const progressCss = (value: number) => css`
   position: fixed;
